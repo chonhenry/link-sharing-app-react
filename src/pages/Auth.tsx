@@ -1,7 +1,15 @@
 import { useState } from "react";
+import { Session } from "@supabase/supabase-js";
 import { supabase } from "../supabaseClient";
+import { Link, Navigate } from "react-router-dom";
 
-export default function Auth() {
+interface AuthProps {
+  session: Session | null;
+}
+
+export default function Auth({ session }: AuthProps) {
+  if (session) return <Navigate to="/account" />;
+
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [errMsg, setErrMsg] = useState<string | null>(null);
