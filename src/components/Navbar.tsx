@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white p-3 flex justify-between items-center rounded-xl ">
+    <nav className="bg-white p-3 mb-5 flex justify-between items-center rounded-xl">
       <div className="max-w-[150px]">
         <img
           className="hidden xs:block"
@@ -64,14 +64,14 @@ export default function Navbar() {
         </NavLink>
       </div>
 
-      <div className="border px-3 sm:px-7 py-2 rounded-lg text-purple">
-        <Link to="/">
+      <Link to="/">
+        <div className="border px-3 sm:px-7 py-2 rounded-lg text-purple">
           <div className="hidden sm:block">Preview</div>
           <div className="sm:hidden">
             <img src="src/assets/icon-preview-header.svg" />
           </div>
-        </Link>
-      </div>
+        </div>
+      </Link>
     </nav>
   );
 }
