@@ -8,7 +8,7 @@ interface AuthProps {
 }
 
 export default function Auth({ session }: AuthProps) {
-  if (session) return <Navigate to="/account" />;
+  if (session) return <Navigate to="/account/links" />;
 
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");

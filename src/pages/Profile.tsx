@@ -10,9 +10,10 @@ interface AuthProps {
 }
 
 export default function Profile({ session }: AuthProps) {
-  if (session === null) {
-    return <Navigate to="/" />;
-  }
+  // if (session === null) {
+  //   return <Navigate to="/" />;
+  // }
+
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState<string>("");
   const [website, setWebsite] = useState<string>("");
@@ -68,8 +69,7 @@ export default function Profile({ session }: AuthProps) {
   }
 
   return (
-    <div className="bg-light-grey w-screen h-screen p-5">
-      <Navbar />
+    <div className="bg-white rounded-xl w-full md:w-4/6 p-5">
       <form
         onSubmit={(e) => updateProfile(e, avatar_url)}
         className="form-widget"
@@ -84,7 +84,7 @@ export default function Profile({ session }: AuthProps) {
         <Link to="/profile">Profile</Link>
         <div>
           <label htmlFor="email">Email</label>
-          <input id="email" type="text" value={session.user.email} disabled />
+          <input id="email" type="text" value={session?.user.email} disabled />
         </div>
         <div>
           <label htmlFor="username">Name</label>
