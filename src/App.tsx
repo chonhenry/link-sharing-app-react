@@ -9,7 +9,6 @@ import { Route, Routes } from "react-router-dom";
 import LinksForm from "./components/LinksForm";
 import AccountLayout from "./components/AccountLayout";
 import { Provider } from "react-redux";
-import { store } from "./store";
 
 function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -31,21 +30,16 @@ function App() {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <Provider store={store}>
-          <Routes>
-            <Route path="/" element={<Auth session={session} />} />
+        <Routes>
+          <Route path="/" element={<Auth session={session} />} />
 
-            <Route
-              path="/account"
-              element={<AccountLayout session={session} />}
-            >
-              <Route path="links" element={<LinksForm />} />
-              <Route path="profile" element={<Profile session={session} />} />
-            </Route>
+          <Route path="/account" element={<AccountLayout session={session} />}>
+            <Route path="links" element={<LinksForm />} />
+            <Route path="profile" element={<Profile session={session} />} />
+          </Route>
 
-            <Route path="*" element={<div>not found</div>} />
-          </Routes>
-        </Provider>
+          <Route path="*" element={<div>not found</div>} />
+        </Routes>
       )}
     </div>
   );
